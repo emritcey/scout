@@ -222,7 +222,7 @@ h1, h2, h3, h4 {
 }
 
 /*gets rid of annoying blue box on focus (webkit)*/
-.no-focus:focus {
+.no-focus:focus, .save-to-drive-button:focus {
 	outline: none;
 }
 
@@ -250,7 +250,7 @@ h1, h2, h3, h4 {
 
 /* mouse over link */
 .destination:hover {
-    background-color: #E24207;
+  background-color: #E24207;
 }
 
 .fa {
