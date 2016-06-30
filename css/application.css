@@ -44,7 +44,6 @@ img {
 	border: none;
 }
 
-
 /* About */
 .tagline {
   font-style: italic;
@@ -61,6 +60,7 @@ img {
 .visit-links {
   text-align: center;
   margin-top: -50px;
+
 }
 
 .about-header {
@@ -90,28 +90,84 @@ img {
 
 .credit {
   text-align: center;
-  margin-top: -40px;
+}
+
+
+#openweather {
+  height: 20px;
+  width: 100px;
+  margin: 0px 10px 0px 10px;
 }
 
 #skyscanner {
-  height: 70px; 
+  height: 70px;
   width: 130px;
-  margin: 0px 40px 0px 40px;
+  margin: 0px 10px 0px 10px;
+}
+
+#sita {
+  height: 20px;
+  width: 100px;
+  margin: 0px 10px 0px 10px;
+}
+
+#skyscanner {
+  height: 60px;
+  width: 100px;
+  margin: 0px 10px 0px 10px;
 }
 
 #flickr {
-  height: 110px;
-  width: 120px;
-  margin: 0px 40px 0px 40px;
+  height: 40px;
+  width: 100px;
+  margin: 0px 10px 0px 10px;
 }
 
 #google {
-  height: 70px;
-  width: 70px;
-  margin: 0px 40px 0px 40px;
+  height: 50px;
+  width: 50px;
+  margin: 0px 10px 0px 10px;
 }
 
-/*Price Styling done by Emma*/
+iframe {
+  width: 200;
+  height: 130;
+  frameborder: 0;
+}
+
 .price-container {
   display: none;
+  background-color: #B2AEB1;
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 15px;
+  margin-left: 30px;
+  font-size: small;
+  font-weight: 700;
+  border-radius: 50%;
+  opacity: 0.85;
 }
+
+.price-container a {
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.price-container a:hover {
+  color: #E24207;
+}
+
+.flight-price {
+  padding-top: 30px;
+}
+
+.price-plane {
+  color: #ffffff !important;
+  margin-left: 0 !important;
+  padding-top: 10px;
+}
+
+
