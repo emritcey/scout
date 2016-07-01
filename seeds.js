@@ -31,8 +31,8 @@ var sydneyNoteText = "<a class='note-text' href='https://www.lonelyplanet.com/au
 var tokyoNoteText = "<a class='note-text' href='https://www.lonelyplanet.com/japan/tokyo' target='_blank'>Lonely Planet - Tokyo</a><br><a class='note-text' href='https://www.airbnb.com/s/Tokyo--Japan' target='_blank'>Airbnb - Tokyo Vacation Rentals & Short-Term Rentals</a><br><a class='note-text' href='http://www.frommers.com/destinations/tokyo' target='_blank'>Frommer's - Tokyo</a>";
 
 var allDestinations;
-function initializeAllDestinations() {
-  chrome.storage.sync.get({"allDestinationsLocal":
+function initializeAllDestinations(storage) {
+  storage.get({"allDestinationsLocal":
    [{"name":"Bangkok", "note": bangkokNoteText},
     {"name":"Barcelona", "note": barcelonaNoteText},
     {"name":"Berlin", "note": berlinNoteText},
@@ -50,15 +50,16 @@ function initializeAllDestinations() {
     {"name":"Tokyo", "note": tokyoNoteText}
    ]}, function(data) {
     allDestinations = data.allDestinationsLocal;
-    chrome.storage.sync.set({"allDestinationsLocal": allDestinations});
+    storage.set({"allDestinationsLocal": allDestinations});
+    return allDestinations;
   });
 }
 
 var myDestinations;
-function initializeMyDestinations() {
-  chrome.storage.sync.get({"myDestinationsLocal": [{"name":"", "note":""}]}, function(data) {
+function initializeMyDestinations(storage) {
+  storage.get({"myDestinationsLocal": [{"name":"", "note":""}]}, function(data) {
     myDestinations = data.myDestinationsLocal;
-    chrome.storage.sync.set({"myDestinationsLocal": myDestinations});
+    storage.set({"myDestinationsLocal": myDestinations});
   });
 }
 

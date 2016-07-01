@@ -2,6 +2,9 @@
 
 // };
 
+initializeAllDestinations(chrome.storage.sync);
+initializeMyDestinations(chrome.storage.sync);
+
 $(document).ready(function(){
   pageAddOnHandler();
   currentWeatherRunner();
@@ -179,6 +182,8 @@ function deleteDestinationNote(place) {
 // END NOTES /\
 
 // BEGIN DESTINATIONS \/
+
+
 
   // functions
   function findAvailableDestinations() {
