@@ -129,11 +129,6 @@ img {
   margin: 0px 10px 0px 10px;
 }
 
-iframe {
-  width: 200;
-  height: 130;
-}
-
 .price-container {
   display: none;
   background-color: #B2AEB1;
@@ -155,19 +150,18 @@ iframe {
   text-decoration: none;
 }
 
+.price-container a:focus {
+  outline: none;
+}
+
 .price-container a:hover {
   color: #E24207;
+  outline: none !important;
 }
 
 .flight-price {
   padding-top: 30px;
 }
 
-.price-plane {
-  color: #ffffff !important;
-  margin-left: 0 !important;
-  margin-right: 5px !important;
-  padding-top: 10px;
-}
 
 

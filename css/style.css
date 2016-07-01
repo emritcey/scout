@@ -1,3 +1,5 @@
+/*animated menus learned from and inspired by https://github.com/codrops/AnimatedBorderMenus*/
+
 *,
 *:after,
 *::before {
@@ -235,12 +237,14 @@ h1, h2, h3, h4, a {
 	background-color: #6E6464;
 	text-align: center;
 	display: inline-block;
+	padding-top: 5px;
 	padding-bottom: 10px;
   padding-left: 20px;
   padding-right: 20px;
 	border: none;
 	color: #E6E6E6;
 	margin: 0;
+	margin-right: 5px;
 	font-size: medium;
 	font-weight: 700;
 	text-decoration: none;
