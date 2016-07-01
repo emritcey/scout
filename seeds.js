@@ -31,31 +31,36 @@ var sydneyNoteText = "<a class='note-text' href='https://www.lonelyplanet.com/au
 var tokyoNoteText = "<a class='note-text' href='https://www.lonelyplanet.com/japan/tokyo' target='_blank'>Lonely Planet - Tokyo</a><br><a class='note-text' href='https://www.airbnb.com/s/Tokyo--Japan' target='_blank'>Airbnb - Tokyo Vacation Rentals & Short-Term Rentals</a><br><a class='note-text' href='http://www.frommers.com/destinations/tokyo' target='_blank'>Frommer's - Tokyo</a>";
 
 var allDestinations;
-chrome.storage.sync.get({"allDestinationsLocal":
- [{"name":"Bangkok", "note": bangkokNoteText},
-  {"name":"Barcelona", "note": barcelonaNoteText},
-  {"name":"Berlin", "note": berlinNoteText},
-  {"name":"Bora Bora", "note": boraBoraNoteText},
-  {"name":"Cape Town", "note": capeTownNoteText},
-  {"name":"Chicago", "note": chicagoNoteText},
-  {"name":"Costa Rica", "note": costaRicaNoteText},
-  {"name":"Cusco", "note": cuscoNoteText},
-  {"name":"London", "note": londonNoteText},
-  {"name":"Marrakesh", "note": marrakeshNoteText},
-  {"name":"Paris", "note": parisNoteText},
-  {"name":"San Francisco", "note": sanFranciscoNoteText},
-  {"name":"Seattle", "note": seattleNoteText},
-  {"name":"Sydney", "note": sydneyNoteText},
-  {"name":"Tokyo", "note": tokyoNoteText}
- ]}, function(data) {
-  allDestinations = data.allDestinationsLocal;
-  chrome.storage.sync.set({"allDestinationsLocal": allDestinations});
-});
+function initializeAllDestinations(storage) {
+  storage.get({"allDestinationsLocal":
+   [{"name":"Bangkok", "note": bangkokNoteText},
+    {"name":"Barcelona", "note": barcelonaNoteText},
+    {"name":"Berlin", "note": berlinNoteText},
+    {"name":"Bora Bora", "note": boraBoraNoteText},
+    {"name":"Cape Town", "note": capeTownNoteText},
+    {"name":"Chicago", "note": chicagoNoteText},
+    {"name":"Costa Rica", "note": costaRicaNoteText},
+    {"name":"Cusco", "note": cuscoNoteText},
+    {"name":"London", "note": londonNoteText},
+    {"name":"Marrakesh", "note": marrakeshNoteText},
+    {"name":"Paris", "note": parisNoteText},
+    {"name":"San Francisco", "note": sanFranciscoNoteText},
+    {"name":"Seattle", "note": seattleNoteText},
+    {"name":"Sydney", "note": sydneyNoteText},
+    {"name":"Tokyo", "note": tokyoNoteText}
+   ]}, function(data) {
+    allDestinations = data.allDestinationsLocal;
+    storage.set({"allDestinationsLocal": allDestinations});
+    return allDestinations;
+  });
+}
 
 var myDestinations;
-chrome.storage.sync.get({"myDestinationsLocal": [{"name":"", "note":""}]}, function(data) {
-  myDestinations = data.myDestinationsLocal;
-  chrome.storage.sync.set({"myDestinationsLocal": myDestinations});
-});
+function initializeMyDestinations(storage) {
+  storage.get({"myDestinationsLocal": [{"name":"", "note":""}]}, function(data) {
+    myDestinations = data.myDestinationsLocal;
+    storage.set({"myDestinationsLocal": myDestinations});
+  });
+}
 
 var availableDestinations = [];
