@@ -19,8 +19,21 @@ describe("test to test the tests", function(){
 // 	// });
 // });
 
-describe("can put a photo as the background", function(){
-	it("can hit the flickr api successfully", function(){
-		expect(getAndApplyPhoto("chicago").done).toBe(true)
-	});
+var fakeStorage = {
+	contents: {},
+	set: function(){
+
+	}
+};
+
+
+
+describe("can write to the database", function(){
+	it("")
+	
 });
+
+
+(function(){
+
+}());
