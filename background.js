@@ -349,8 +349,7 @@ response.done(function(flightInfo){
        } else {
          $("#flight-price").text("$" + price);
          $("#flight-date").text(niceDate);
-         $("#flight-current").text(current);
-         $("#flight-destination").text(destinName);
+         $("#flight-places").text(current + "-" + destinName);
          $("#flight-link").attr("href", link);
        }
     });
@@ -367,8 +366,7 @@ response.done(function(flightInfo){
       } else {
         $("#flight-price").text("$" + price);
         $("#flight-date").text(niceDate);
-        $("#flight-current").text(current);
-        $("#flight-destination").text(destinName);
+        $("#flight-places").text(current + "-" + destinName);
         $("#flight-link").attr("href", link);
       }
     };
