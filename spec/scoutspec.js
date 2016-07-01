@@ -45,5 +45,25 @@ describe("initialize my destinations", function(){
 	});
 });
 
+describe("initialize my destinations", function(){
+
+	var fakeStorage = {
+		contents: {},
+		set: function(k) {
+			this.contents = k;
+		},
+		get: function(k, callback) {
+			var val = this.contents[k];
+			callback(k);
+		}
+	}
+
+	initializeMyDestinations(fakeStorage);
+
+	it("initializes my destinations", function() {
+		expect(fakeStorage.contents.myDestinationsLocal[0].name).toEqual("");
+		expect(fakeStorage.contents.myDestinationsLocal[0].note).toEqual("");
+	});
+});
 
 
