@@ -1,7 +1,3 @@
-// window.onload = function() {
-
-// };
-
 initializeAllDestinations(chrome.storage.sync);
 initializeMyDestinations(chrome.storage.sync);
 
@@ -14,11 +10,11 @@ $(document).ready(function(){
   $("head").append("<script src='https://use.fontawesome.com/8e7d53f080.js'></script>");
 
   $("#fakeLoader").fakeLoader({
-            timeToHide:2000, //Time in milliseconds for fakeLoader disappear
-            zIndex:999, // Default zIndex
-            spinner:"spinner1",//Options: 'spinner1', 'spinner2', 'spinner3', 'spinner4', 'spinner5', 'spinner6', 'spinner7'
-            bgColor:"#6E6464", //Hex, RGB or RGBA colors
-            // imagePath:"icon-sm.png" //If you want can you insert your custom image
+      timeToHide:2000, //Time in milliseconds for fakeLoader disappear
+      zIndex:999, // Default zIndex
+      spinner:"spinner1",//Options: 'spinner1', 'spinner2', 'spinner3', 'spinner4', 'spinner5', 'spinner6', 'spinner7'
+      bgColor:"#6E6464", //Hex, RGB or RGBA colors
+    // imagePath:"icon-sm.png" //If you want can you insert your custom image
     });
 
   // populate notes from menu with places that have notes
@@ -48,7 +44,7 @@ $(document).ready(function(){
 
 
 function getAndApplyPhoto(tag) {
-  return $.ajax({url: "https://api.flickr.com/services/rest/?method=flickr.favorites.getList&api_key=15814abffa9beab837cad31506bd4eca&user_id=87845824%40N05&extras=tags&format=json&nojsoncallback=1", method: "get"});
+  return $.ajax({url: "https://api.flickr.com/services/rest/?method=flickr.favorites.getList&api_key=*************&user_id=87845824%40N05&extras=tags&format=json&nojsoncallback=1", method: "get"});
 };
 
 function grabPhotoObjects(response) {
@@ -73,7 +69,7 @@ function returnSpecificImage(array) {
 
 // WEATHER API \/
 function handleWeather(city) {
-   return $.ajax({url:"http://api.openweathermap.org/data/2.5/weather?q="+city+"&units=imperial&appid=76b001f2621941cd5d249226db15ed15", method: "get"});
+   return $.ajax({url:"http://api.openweathermap.org/data/2.5/weather?q="+city+"&units=imperial&appid=*************", method: "get"});
 };
 
 function currentWeatherRunner() {
@@ -166,24 +162,9 @@ function showAllNotes() {
   });
 };
 
-// delete a particular destination's notes (replace destination notes with a blank string)
-// NOT NEEDED FOR NOW
-function deleteDestinationNote(place) {
-  chrome.storage.sync.get(function(database) {
-    database.myDestinationsLocal.forEach(function(country){
-      if(country.name == place) {
-        country.note = "";
-      };
-    });
-    chrome.storage.sync.set(database);
-  });
-};
-
 // END NOTES /\
 
 // BEGIN DESTINATIONS \/
-
-
 
   // functions
   function findAvailableDestinations() {
@@ -313,7 +294,7 @@ function setupDate(longForm){
 }
 
 function getAirportCode(lat, long){
-  return $.ajax({url:"https://airport.api.aero/airport/nearest/"+lat+"/"+long+"?maxAirports=2&user_key=6af0095cd237e754d20b7a2f4745110b",dataType: "json", method: "GET"});
+  return $.ajax({url:"https://airport.api.aero/airport/nearest/"+lat+"/"+long+"?maxAirports=2&user_key=*************",dataType: "json", method: "GET"});
 };
 
 function hardAirportCode(city, success) {
@@ -322,23 +303,14 @@ function hardAirportCode(city, success) {
 };
 
 function getFlightInfo(currentLocationOne, currentLocationTwo, destination) {
-  console.log(currentLocationOne);
-  console.log(currentLocationTwo);
   var dates = getTravelDates()
   var leaveDate = dates[0];
   var returnDate = dates[1];
   var niceDate = dates[2];
-  var response = $.ajax({url: "http://partners.api.skyscanner.net/apiservices/browsequotes/v1.0/US/USD/en_US/"+currentLocationOne+"/"+destination+"/"+leaveDate+"/"+returnDate+"/?apiKey=db645170358776132895925581771065", method: "get", contentType: "application/json", dataType: 'json'});
+  var response = $.ajax({url: "http://partners.api.skyscanner.net/apiservices/browsequotes/v1.0/US/USD/en_US/"+currentLocationOne+"/"+destination+"/"+leaveDate+"/"+returnDate+"/?apiKey=*************", method: "get", contentType: "application/json", dataType: 'json'});
 response.done(function(flightInfo){
-  console.log("LENGTH", flightInfo.Quotes.length)
-
   if (flightInfo.Quotes.length < 1) {
-    console.log("leading into the second try")
-    console.log(currentLocationTwo)
-    console.log(destination)
-    response = $.ajax({url: "http://partners.api.skyscanner.net/apiservices/browsequotes/v1.0/US/USD/en_US/"+currentLocationTwo+"/"+destination+"/"+leaveDate+"/"+returnDate+"/?apiKey=db645170358776132895925581771065", method: "get", contentType: "application/json", dataType: 'json'}).done(function(flightInfo){
-      console.log("TRY2");
-      console.log(flightInfo)
+    response = $.ajax({url: "http://partners.api.skyscanner.net/apiservices/browsequotes/v1.0/US/USD/en_US/"+currentLocationTwo+"/"+destination+"/"+leaveDate+"/"+returnDate+"/?apiKey=*************", method: "get", contentType: "application/json", dataType: 'json'}).done(function(flightInfo){
        var price = flightInfo.Quotes[0].MinPrice;
        var destinName = flightInfo.Places[0].CityName;
        var current = flightInfo.Places[1].CityName;
@@ -354,8 +326,6 @@ response.done(function(flightInfo){
        }
     });
   }else {
-    console.log("TRY1");
-
     var price = flightInfo.Quotes[0].MinPrice;
     var destinName = flightInfo.Places[0].CityName;
     var current = flightInfo.Places[1].CityName;
@@ -370,9 +340,6 @@ response.done(function(flightInfo){
         $("#flight-link").attr("href", link);
       }
     };
-
-
-        // $(".plane-container").show();
 
       $(".plane-container").on("click", function(event){
         $(".plane-container").hide();
